@@ -1,2 +1,3 @@
-alert('I am JavaScript!111');
-alert('Тест русского языка!');
+let name = "Василий";
+let admin = name;
+alert(admin);
