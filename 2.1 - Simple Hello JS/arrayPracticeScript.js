@@ -6,7 +6,8 @@ styles.unshift("1","2");
 //alert(styles);
 //alert(getRandomArrayElement(styles))
 
-//-----------
+//-----------Simple algorithms
+
 // var sum = 0;
 // var userNumber = getUserNumber();
 // while (userNumber !== undefined){
@@ -14,13 +15,32 @@ styles.unshift("1","2");
 //     userNumber = getUserNumber();
 // }
 // alert(sum);
-let simpleNumbers = SieveOfEratosthenes(100);
-console.log();
-let sum = 0;
-for (let i = 0; i < simpleNumbers.length; i++) {
-    sum += simpleNumbers[i];
+
+//-------------SieveOfEratosthenes
+
+// let simpleNumbers = SieveOfEratosthenes(100);
+// console.log();
+// let sum = 0;
+// for (let i = 0; i < simpleNumbers.length; i++) {
+//     sum += simpleNumbers[i];
+// }
+//alert(sum);
+
+//-------------Algorithm returns largest sum in subarray.
+
+alert(getMaxSumOfSubarray([1,54,7,-1,54]))
+
+function getMaxSumOfSubarray(array){
+    if (array.length < 1) return undefined;
+    let maxSum = -Infinity;
+    let currentSum = 0;
+    for (let i = 0; i < array.length; i++) {
+        currentSum += array[i];
+        if (currentSum > maxSum) maxSum = currentSum;
+        if (currentSum < 0) currentSum = 0;
+    }
+    return maxSum;
 }
-alert(sum);
 
 function getUserNumber(){
     var userString = prompt("Enter number to sum with previous numbers.", '');
@@ -38,7 +58,7 @@ function SieveOfEratosthenes(size){
     var simpleNumbers = [];
     var sieveArray = new Array(size - 1);
     var sieveArrayMarkers = new Array(size - 1);
-    for (let i = 2; i <= size; i++) {
+    for (let i = 2; i <= size; i++) { 
         sieveArray[i - 2] = i;
         sieveArrayMarkers[i - 2] = true;
     }
